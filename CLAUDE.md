@@ -48,7 +48,7 @@ Link_to_Media/
     └── src-tauri/
         ├── src/lib.rs             ← Tauri commands + sidecar management
         ├── Cargo.toml             ← tauri-plugin-dialog, tauri-plugin-sql(sqlite), tauri-plugin-opener
-        └── tauri.conf.json        ← productName "Link to Media", 960×640 window
+        └── tauri.conf.json        ← productName "FetchIt", identifier "com.belal.fetchit", 960×640 window
 ```
 
 ## Tauri Backend (lib.rs)

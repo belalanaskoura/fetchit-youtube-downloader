@@ -1,4 +1,4 @@
-# Link to Media
+# FetchIt
 
 A desktop YouTube downloader built with Tauri 2.0, React, and yt-dlp. Download audio or video in multiple formats and qualities with a clean dark interface.
 
@@ -35,8 +35,8 @@ pip install yt-dlp
 ## Installation
 
 ```bash
-git clone https://github.com/your-username/Link_to_Media.git
-cd Link_to_Media/tauri-app
+git clone https://github.com/your-username/fetchit.git
+cd fetchit/tauri-app
 npm install
 ```
 

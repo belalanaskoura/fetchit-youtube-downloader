@@ -1,8 +1,8 @@
 {
   "$schema": "https://schema.tauri.app/config/2",
-  "productName": "Link to Media",
+  "productName": "FetchIt",
   "version": "0.1.0",
-  "identifier": "com.belal.link-to-media",
+  "identifier": "com.belal.fetchit",
   "build": {
     "beforeDevCommand": "npm run dev",
     "devUrl": "http://localhost:1420",
@@ -12,7 +12,7 @@
   "app": {
     "windows": [
       {
-        "title": "Link to Media",
+        "title": "FetchIt",
         "width": 960,
         "height": 640,
         "minWidth": 800,

@@ -135,7 +135,7 @@ export function Sidebar({ history, onDeleteEntry, onClearAll }: SidebarProps) {
           </svg>
         </div>
         <div>
-          <p className="text-sm font-bold text-white leading-none">Link to Media</p>
+          <p className="text-sm font-bold text-white leading-none">FetchIt</p>
           <p className="text-xs text-[oklch(0.45_0.008_285)] mt-0.5">YouTube Downloader</p>
         </div>
       </div>
