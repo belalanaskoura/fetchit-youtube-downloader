@@ -85,6 +85,14 @@ function HistoryItem({ entry, index, onDelete }: { entry: HistoryEntry; index: n
             </div>
           </div>
         </div>
+        {/* Delete button — always visible, subtle until hovered */}
+        <button
+          className="shrink-0 mt-0.5 opacity-25 hover:opacity-100 text-[oklch(0.5_0.008_285)] hover:text-red-400 transition-opacity"
+          onClick={() => entry.id != null && onDelete(entry.id)}
+          title="Remove from history"
+        >
+          <Trash2 className="h-3.5 w-3.5" />
+        </button>
       </div>
 
       {/* Action buttons — revealed on hover */}
@@ -108,16 +116,6 @@ function HistoryItem({ entry, index, onDelete }: { entry: HistoryEntry; index: n
         >
           <FolderOpen className="h-3 w-3" />
           Folder
-        </Button>
-        <Button
-          variant="ghost"
-          size="sm"
-          className="h-6 px-2 text-xs text-red-400 hover:text-red-300 ml-auto"
-          onClick={() => entry.id != null && onDelete(entry.id)}
-          title="Remove from history"
-        >
-          <Trash2 className="h-3 w-3" />
-          Remove
         </Button>
       </div>
     </motion.div>

@@ -19,6 +19,7 @@ from pathlib import Path
 import yt_dlp
 
 _cancel_flag = False
+_first_stream_done = False  # True after first stream finishes; suppresses second-stream progress for video
 # No client restriction — let yt-dlp auto-select the best working client.
 # Hard-coding a specific client (android, ios, etc.) breaks whenever YouTube
 # changes authentication requirements; yt-dlp's auto-selection handles this.
@@ -31,10 +32,11 @@ def emit(obj: dict):
 
 
 def progress_hook(d: dict):
+    global _first_stream_done
     if _cancel_flag:
         raise Exception("Download cancelled by user")
 
-    if d["status"] == "downloading":
+    if d["status"] == "downloading" and not _first_stream_done:
         try:
             percent = None
             downloaded_bytes = d.get("downloaded_bytes", 0)
@@ -61,7 +63,10 @@ def progress_hook(d: dict):
         except Exception:
             emit({"type": "progress", "percent": None, "speed": ""})
 
-    elif d["status"] == "finished":
+    elif d["status"] == "finished" and not _first_stream_done:
+        # Mark first stream done — video has a second audio stream that would
+        # otherwise reset progress to 0 and look like a duplicate download.
+        _first_stream_done = True
         emit({"type": "finished"})
 
 
@@ -125,8 +130,9 @@ def _stdin_cancel_watcher():
 
 
 def run_download(cmd: dict):
-    global _cancel_flag
+    global _cancel_flag, _first_stream_done
     _cancel_flag = False
+    _first_stream_done = False
 
     url = cmd.get("url", "").strip()
     fmt = cmd.get("format", "mp3").lower()
