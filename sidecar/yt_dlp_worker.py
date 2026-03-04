@@ -78,6 +78,10 @@ _COMMON_OPTS = {
     # Download up to 5 fragments in parallel — YouTube uses DASH/HLS which
     # delivers video/audio as many small fragments; sequential download is slow.
     "concurrent_fragment_downloads": 5,
+    # Increase timeouts and retries to handle slow/flaky connections.
+    "socket_timeout": 60,
+    "retries": 10,
+    "fragment_retries": 10,
 }
 
 
