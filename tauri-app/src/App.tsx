@@ -144,6 +144,9 @@ export default function App() {
           .join("/")
           .replace(/\//g, "\\");
         invoke("open_folder", { path: folder }).catch(console.error);
+        setTimeout(() => {
+          setProgress({ status: "idle", percent: null, speed: "" });
+        }, 3000);
         addHistoryEntryRef.current?.({
           title: e.payload.title,
           url: pendingMeta.current?.url ?? "",
