@@ -127,8 +127,8 @@ export function Sidebar({ history, onDeleteEntry, onClearAll }: SidebarProps) {
   return (
     <aside className="flex flex-col h-full w-72 shrink-0 border-r border-[oklch(0.18_0.006_285)] bg-[oklch(0.105_0.006_285)]">
       {/* Logo */}
-      <div className="flex items-center gap-2.5 px-4 py-5">
-        <img src={logoImage} alt="FetchIt" className="h-12 w-12 rounded-lg" />
+      <div className="flex items-center gap-3 px-4 py-2">
+        <img src={logoImage} alt="FetchIt" className="h-20 w-20 rounded-lg shrink-0 object-contain" />
         <div>
           <p className="text-sm font-bold text-white leading-none">FetchIt</p>
           <p className="text-xs text-[oklch(0.45_0.008_285)] mt-0.5">YouTube Downloader</p>
