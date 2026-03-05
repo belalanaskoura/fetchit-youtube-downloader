@@ -86,9 +86,9 @@ _COMMON_OPTS = {
     # Download up to 16 fragments in parallel — YouTube uses DASH/HLS which
     # delivers video/audio as many small fragments; sequential download is slow.
     "concurrent_fragment_downloads": 16,
-    # Download in 10 MB chunks instead of the default small chunks — reduces
-    # per-request overhead and saturates bandwidth more effectively.
-    "http_chunk_size": 10485760,
+    # If download speed drops below 100 KB/s, yt-dlp treats it as YouTube
+    # throttling and retries without range headers — the main fix for slow speeds.
+    "throttled_rate": "100K",
     # Increase timeouts and retries to handle slow/flaky connections.
     "socket_timeout": 60,
     "retries": 10,
