@@ -16,6 +16,14 @@ import threading
 import time
 from pathlib import Path
 
+# Python 3.14 changed platform.win32_ver() to use WMI, which hangs indefinitely
+# when the process has no console attached (e.g. when spawned by Rust with piped
+# I/O). yt-dlp calls platform.win32_ver() inside YoutubeDL.__init__ via
+# windows_enable_vt_mode() → get_windows_version(). Patch platform.win32_ver
+# before importing yt_dlp so the constructor never blocks.
+import platform as _platform
+_platform.win32_ver = lambda *a, **kw: ('10.0.26200', '', 'Multiprocessor Free', '')
+
 import yt_dlp
 
 _cancel_flag = False
